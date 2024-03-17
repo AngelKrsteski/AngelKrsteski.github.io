@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Example</title>
+</head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+<body>
+
+    <h2>Upload File</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Choose File:</label>
+        <input type="file" id="file" name="file" required><br><br>
+        
+        <button type="submit">Upload</button>
+    </form>
+    <script>
+        // Get the file input element
+        const fileInput = document.getElementById('upload');
+        // Get the div where we'll display the file name
+        const fileNameDiv = document.getElementById('file-name');
+        // Add event listener to file input change event
+        fileInput.addEventListener('change', function() {
+            // Get the selected file
+            const file = fileInput.files[0];
+            // Display the file name
+            fileNameDiv.textContent = file ? file.name : 'No file selected';
+        });
+    </script>
+</body>
+</html>
